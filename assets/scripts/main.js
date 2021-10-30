@@ -31,7 +31,7 @@ async function init() {
 }
 
 async function fetchRecipes() {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     // This function is called for you up above
     // From this function, you are going to fetch each of the recipes in the 'recipes' array above.
     // Once you have that data, store it in the 'recipeData' object. You can use whatever you like
@@ -43,6 +43,23 @@ async function fetchRecipes() {
     // in the recipes folder and fetch them from there. You'll need to add their paths to the recipes array.
 
     // Part 1 Expose - TODO
+    var i = 0;
+    for(i = 0; i < recipes.length; i++){
+      await fetch(recipes[i]).then(async (results) => {
+        if(!results.ok){
+          reject(false);
+          return;
+        }
+        var inside = true;
+        await results.text().then((responses) => {
+          recipeData[recipes[i]] = responses;
+          inside = false;
+        })
+      });
+  }
+  console.log(Object.keys(recipeData).length);
+    resolve(true);
+    return;
   });
 }
 
