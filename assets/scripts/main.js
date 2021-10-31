@@ -53,6 +53,8 @@ async function fetchRecipes() {
         var inside = true;
         await results.text().then((responses) => {
           recipeData[recipes[i]] = responses;
+          // console.log(responses);
+          // console.log(recipes[i]);
           inside = false;
         })
       });
@@ -74,7 +76,10 @@ function createRecipeCards() {
   var main = document.querySelector("main");
   for(i = 0; i < Object.keys(recipeData).length; i++) {
     let element = document.createElement('recipe-card');
-    element.data = recipeData[i];
+    // console.log(Object.keys(recipeData));
+    // console.log(recipeData);
+    console.log(recipes[i]);
+    element.data = recipeData[recipes[i]];
     main.append(element);
   }
 }
