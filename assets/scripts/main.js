@@ -57,7 +57,6 @@ async function fetchRecipes() {
         })
       });
   }
-  console.log(Object.keys(recipeData).length);
     resolve(true);
     return;
   });
@@ -72,9 +71,11 @@ function createRecipeCards() {
 
   // Part 1 Expose - TODO
   var i = 0;
-  for(i = 0; i < recipeData.length; i++) {
+  var main = document.querySelector("main");
+  for(i = 0; i < Object.keys(recipeData).length; i++) {
     let element = document.createElement('recipe-card');
     element.data = recipeData[i];
+    main.append(element);
   }
 }
 

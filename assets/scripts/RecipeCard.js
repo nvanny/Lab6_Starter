@@ -3,13 +3,13 @@ class RecipeCard extends HTMLElement {
     // Part 1 Expose - TODO
     super();
     // You'll want to attach the shadow DOM here
-    this.attachShadow({mode: 'open'});
+    var shadow = this.attachShadow({mode: 'open'});
   }
 
   set data(data) {
     // This is the CSS that you'll use for your recipe cards
     const styleElem = document.createElement('style');
-    const styles = `
+    styleElem.innerHTML = `
       * {
         font-family: sans-serif;
         margin: 0;
@@ -84,7 +84,6 @@ class RecipeCard extends HTMLElement {
         font-size: 12px;
       }
     `;
-    styleElem.innerHTML = styles;
 
     // Here's the root element that you'll want to attach all of your other elements to
     const card = document.createElement('article');
@@ -101,11 +100,11 @@ class RecipeCard extends HTMLElement {
     // created in the constructor()
 
     // Part 1 Expose - TODO
-    this.shadowRoot.appendChild(styles);
+    this.shadowRoot.appendChild(styleElem);
     this.shadowRoot.appendChild(card);
-    let url = this.getUrl(data);
+    /*let url = this.getUrl(data);
     let organization = this.getOrganization(data);
-    let ingredients = this.createIngredientList(data.ingredientArr);
+    let ingredients = this.createIngredientList(data.ingredientArr);*/
   }
 }
 
