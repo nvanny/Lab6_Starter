@@ -101,7 +101,6 @@ class RecipeCard extends HTMLElement {
 
     // Part 1 Expose - TODO
     data = JSON.parse(data);
-    console.log(data);
     let img = document.createElement("img")
     let picKey = searchForKey(data, 'thumbnailUrl');
     img.src = picKey;

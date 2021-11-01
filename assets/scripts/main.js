@@ -5,7 +5,10 @@
 const recipes = [
   'https://introweb.tech/assets/json/ghostCookies.json',
   'https://introweb.tech/assets/json/birthdayCake.json',
-  'https://introweb.tech/assets/json/chocolateChip.json'
+  'https://introweb.tech/assets/json/chocolateChip.json',
+  'assets/recipes/cornbread.json',
+  'assets/recipes/pumpkinBurger.json',
+  'assets/recipes/mummyCookies.json'
 ];
 
 // Once all of the recipes that were specified above have been fetched, their
@@ -78,8 +81,11 @@ function createRecipeCards() {
     let element = document.createElement('recipe-card');
     // console.log(Object.keys(recipeData));
     // console.log(recipeData);
-    console.log(recipes[i]);
+    // console.log(recipes[i]);
     element.data = recipeData[recipes[i]];
+    if(i > 2) {
+      element.style.display = 'none';
+    }
     main.append(element);
   }
 }
@@ -93,4 +99,27 @@ function bindShowMore() {
   // in the recipeData object where you stored them/
 
   // Part 2 Explore - TODO
+  var button = document.querySelector("button");
+  var cards = document.getElementsByTagName('recipe-card');
+  console.log(cards);
+  button.addEventListener('click', function() {
+    if(button.textContent === 'Show more') {
+      button.textContent = 'Show less';
+      var i = 0;
+      for(i; i < cards.length; i++) {
+        if(cards[i].style.display === 'none') {
+          cards[i].style.display = 'initial';
+        }
+      }
+    }
+    else {
+      button.textContent = 'Show more';
+      var i = 0;
+      for(i; i < cards.length; i++) {
+        if(cards[i].style.display === 'initial') {
+          cards[i].style.display = 'none';
+        }
+      }
+    }
+  });
 }
