@@ -133,7 +133,7 @@ class RecipeCard extends HTMLElement {
       valSpan.append(ratingValue);
       reviews.appendChild(valSpan);
       let stars = document.createElement("img");
-      stars.src = `/assets/images/icons/${Math.round(ratingValue)}-star.svg`;
+      stars.src = `assets/images/icons/${Math.round(ratingValue)}-star.svg`;
       reviews.appendChild(stars);
       let totSpan = document.createElement("span");
       totSpan.append(`(${ratingCount})`);
